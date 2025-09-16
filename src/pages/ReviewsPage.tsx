@@ -13,6 +13,9 @@ const ReviewsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
+  // Filter published reviews from available reviews
+  const publishedReviews = availableReviews.filter(clinic => clinic.review_published === true);
+  
   useEffect(() => {
     loadAvailableReviews();
   }, []);
@@ -349,8 +352,8 @@ const ReviewsPage: React.FC = () => {
               <div className="col-span-3 text-center py-12">
                 <p className="text-red-600">Error loading clinics: {error}</p>
               </div>
-            ) : publishedReviews.length > 0 ? (
-              publishedReviews
+            ) : availableReviews.length > 0 ? (
+              availableReviews
                 .map((clinic) => (
                 <div
                   key={clinic.id} 
