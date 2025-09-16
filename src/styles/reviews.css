@@ -1,0 +1,19 @@
+/* === Review UI Style Guide (v1) === */
+
+/* Card wrapper */
+.reviewCard {
+  @apply bg-white rounded-lg shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow;
+}
+
+/* Star colours */
+.starFilled {
+  @apply fill-yellow-400 text-yellow-400;
+}
+.starEmpty {
+  @apply text-gray-300;
+}
+
+/* Rating wrapper */
+.ratingWrapper {
+  @apply flex items-center space-x-1;
+}

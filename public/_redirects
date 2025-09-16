@@ -1,0 +1,8 @@
+# Netlify redirects file
+# Legacy /clinic/ URLs redirect to /clinics/ - Updated with more specific patterns
+/clinic/:slug /clinics/:slug 301
+/clinic/ /clinics/ 301
+/clinic /clinics 301
+
+# SPA fallback - must be last
+/* /index.html 200

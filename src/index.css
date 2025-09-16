@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* React Quill Editor Styles - Only loaded when editor is used */
+@layer components {
+  .ql-editor {
+    min-height: 200px;
+  }
+
+  .ql-toolbar {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+  }
+
+  .ql-container {
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-pill px-4 py-2 shadow-md transition-all duration-200 hover:from-blue-700 hover:to-green-700 hover:shadow-lg hover:scale-105 focus:ring-2 focus:ring-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600;
+  }
+  
+  .btn-secondary {
+    @apply border border-blue-600 text-blue-600 rounded-pill px-4 py-2 hover:bg-blue-50 transition-all duration-200 hover:shadow focus:ring-2 focus:ring-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600;
+  }
+  
+  .btn-disabled {
+    @apply bg-neutral-300 text-neutral-500 cursor-not-allowed;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-all duration-200 focus-within:ring-2 focus-within:ring-blue-500;
+  }
+  
+  .section-dark {
+    @apply bg-gradient-to-r from-midBlue to-gray-900 text-white;
+  }
+  
+  .section-light {
+    @apply bg-gradient-to-br from-blue-50 via-white to-green-50;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-blue {
+    @apply badge bg-blue-100 text-blue-800;
+  }
+  
+  .badge-green {
+    @apply badge bg-green-100 text-green-800;
+  }
+  
+  .badge-purple {
+    @apply badge bg-purple-100 text-purple-800;
+  }
+  
+  .badge-yellow {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+  
+  .badge-red {
+    @apply badge bg-red-100 text-red-800;
+  }
+  
+  .heading-xl {
+    @apply text-4xl md:text-5xl font-bold;
+  }
+  
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+  
+  .heading-md {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+  
+  .heading-sm {
+    @apply text-xl md:text-2xl font-bold;
+  }
+  
+  .subheading {
+    @apply text-xl text-gray-600;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Staggered animations for lists */
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+.stagger-item:nth-child(6) { animation-delay: 0.6s; }

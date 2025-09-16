@@ -1,0 +1,44 @@
+# CompareTheLeaf Robots.txt - UK Medical Cannabis Clinic Comparison Platform
+
+User-agent: *
+Allow: /
+
+# Allow all important medical cannabis content to be crawled
+Allow: /clinics
+Allow: /conditions
+Allow: /education
+Allow: /reviews
+Allow: /tools
+Allow: /quiz
+Allow: /articles
+Allow: /faq
+Allow: /about
+Allow: /contact
+
+# Allow specific high-value pages
+Allow: /budget-tool
+Allow: /qualify
+Allow: /check-eligibility
+Allow: /compare
+
+# Allow search engines to access CSS and JS files for proper rendering
+Allow: /assets/
+Allow: /*.css
+Allow: /*.js
+
+# Sitemap location
+Sitemap: https://comparetheleaf.co.uk/sitemap.xml
+
+# Additional directives for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block any unwanted bots (add as needed)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
