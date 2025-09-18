@@ -434,16 +434,44 @@ const LandingFindReliefPage: React.FC = () => {
               <div className="bg-white rounded-lg p-8 text-center">
                 <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Your Free Guide is On Its Way!
+                  ✅ Success! Your Cannabis Prescription Guide Has Been Sent!
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  We've sent your personalised UK Medical Cannabis Eligibility Guide to {formData.email}. 
-                  You'll also be redirected to our clinic matching quiz.
+                  Your personalised UK Medical Cannabis Eligibility Guide has been sent to <strong>{formData.email}</strong>. 
+                  Check your email in the next few minutes (including spam folder).
                 </p>
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button
+                    onClick={() => navigate('/quiz')}
+                    className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-green-700 transition-all"
+                  >
+                    Find My Perfect Clinic
+                  </button>
+                  <button
+                    onClick={() => {
+                      setIsSubmitted(false);
+                      setFormData({ name: '', email: '', postcode: '', condition: '' });
+                    }}
+                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    Send Another Guide
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="bg-white rounded-lg p-8">
+                {submitError && (
+                  <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+                    <div className="flex items-start">
+                      <AlertTriangle className="h-5 w-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="text-red-800 font-medium mb-1">Submission Failed</h4>
+                        <p className="text-red-700 text-sm">{submitError}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -456,12 +484,25 @@ const LandingFindReliefPage: React.FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                        validationErrors.name ? 'border-red-300 bg-red-50' :   'border-gray-300'
+                      }`}
                       placeholder="John Smith"
                     />
+                    {validationErrors.name && (
+                      <p className="mt-1 text-sm text-red-600">{validationErrors.name}</p>
+                    )}
                   </div>
 
                   <div>
+      setSubmitError(
+        error instanceof Error 
+          ? `Submission failed: ${error.message}. Please try again or contact support.`
+          : 'Something went wrong. Please try again or contact support.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                       Email Address *
                     </label>
