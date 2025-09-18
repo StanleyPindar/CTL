@@ -21,6 +21,8 @@ const LandingFindReliefPage: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -28,22 +30,107 @@ const LandingFindReliefPage: React.FC = () => {
       ...prev,
       [name]: value
     }));
+    
+    // Clear validation error when user starts typing
+    if (validationErrors[name]) {
+      setValidationErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+    
+    // Clear submit error when user makes changes
+    if (submitError) {
+      setSubmitError(null);
+    }
   };
 
+  const validateForm = (): boolean => {
+    const errors: Record<string, string> = {};
+    
+    if (!formData.name.trim()) {
+      errors.name = 'Full name is required';
+    }
+    
+    if (!formData.email.trim()) {
+      errors.email = 'Email address is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = 'Please enter a valid email address';
+    }
+    
+    if (!formData.postcode.trim()) {
+      errors.postcode = 'UK postcode is required';
+    } else if (!/^[A-Z]{1,2}[0-9][A-Z0-9]?\s?[0-9][A-Z]{2}$/i.test(formData.postcode.replace(/\s/g, ''))) {
+      errors.postcode = 'Please enter a valid UK postcode';
+    }
+    
+    if (!formData.condition) {
+      errors.condition = 'Please select your primary condition';
+    }
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form before submission
+    if (!validateForm()) {
+      return;
+    }
+    
     setIsSubmitting(true);
+    setSubmitError(null);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Redirect to quiz after successful submission
-    setTimeout(() => {
-      navigate('/quiz');
-    }, 2000);
+    try {
+      console.log('Submitting form data to Make.com webhook:', formData);
+      
+      // Submit to Make.com webhook
+      const response = await fetch('https://hook.eu2.make.com/1fvaubdg79hlfz5tq7fqvhwz21oq2x9x', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim().toLowerCase(),
+          postcode: formData.postcode.trim().toUpperCase(),
+          condition: formData.condition,
+          source: 'landing-find-relief',
+          timestamp: new Date().toISOString(),
+          userAgent: navigator.userAgent,
+          referrer: document.referrer || 'direct'
+        })
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      console.log('Form submitted successfully to Make.com');
+      setIsSubmitted(true);
+      
+      // Reset form after successful submission
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          postcode: '',
+          condition: ''
+        });
+        setIsSubmitted(false);
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Error submitting form to Make.com:', error);
+      setSubmitError(
+        error instanceof Error 
+          ? `Submission failed: ${error.message}. Please try again or contact support.`
+          : 'Something went wrong. Please try again or contact support.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const conditions = [
