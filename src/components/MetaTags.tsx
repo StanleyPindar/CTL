@@ -294,7 +294,11 @@ const MetaTags = React.memo<MetaTagsProps>(({
           ratingValue: medicalBusinessData.rating,
           reviewCount: medicalBusinessData.reviewCount || 0,
           bestRating: 5,
-          worstRating: 1
+          worstRating: 1,
+          itemReviewed: {
+            '@type': 'MedicalBusiness',
+            name: medicalBusinessData.name
+          }
         } : undefined,
         priceRange: medicalBusinessData.priceRange || '£150-£400',
         medicalSpecialty: medicalBusinessData.specialties || ['Medical Cannabis Treatment'],
@@ -335,10 +339,14 @@ const MetaTags = React.memo<MetaTagsProps>(({
         url: clinicData?.website,
         aggregateRating: clinicData?.rating ? {
           '@type': 'AggregateRating',
-          ratingValue: clinicData.rating.toString(),
-          reviewCount: parseInt((clinicData.reviewCount || 0).toString()),
-          bestRating: '5',
-          worstRating: '1'
+          ratingValue: clinicData.rating,
+          reviewCount: clinicData.reviewCount || 0,
+          bestRating: 5,
+          worstRating: 1,
+          itemReviewed: {
+            '@type': 'MedicalBusiness',
+            name: clinicData.name
+          }
         } : undefined,
         priceRange: clinicData?.priceRange || '£150-£400',
         medicalSpecialty: clinicData?.specialties || ['Medical Cannabis Treatment'],

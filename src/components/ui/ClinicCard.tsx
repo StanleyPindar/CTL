@@ -140,7 +140,7 @@ const ClinicCard = React.memo<ClinicCardProps>(({ clinic, onClick }) => {
           <div className="flex items-center mb-1" itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
             <StarRating value={Math.round(clinicData.rating)} size={16} />
             <span className="text-sm font-medium ml-1" itemProp="ratingValue">{clinicData.rating.toFixed(1)}</span>
-            <span className="text-xs text-gray-500 ml-1">(<span itemProp="reviewCount">{clinicData.reviews > 0 ? clinicData.reviews.toLocaleString() : 0}</span> reviews)</span>
+            <span className="text-xs text-gray-500 ml-1">(<span itemProp="reviewCount">{clinicData.reviews}</span> reviews)</span>
             <meta itemProp="bestRating" content="5" />
             <meta itemProp="worstRating" content="1" />
           </div>
