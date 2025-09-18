@@ -451,8 +451,54 @@ const LandingFindReliefPage: React.FC = () => {
                     onClick={() => {
                       setIsSubmitted(false);
                       setFormData({ name: '', email: '', postcode: '', condition: '' });
-                      setValidationErrors({});
-                      setSubmitError(null);
+                    }}
+                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    Send Another Guide
+                  </button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button
+                    onClick={() => navigate('/quiz')}
+                    className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-green-700 transition-all"
+                  >
+                    Find My Perfect Clinic
+                  </button>
+                  <button
+                    onClick={() => {
+                      setIsSubmitted(false);
+                      setFormData({ name: '', email: '', postcode: '', condition: '' });
+                    }}
+                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    Send Another Guide
+                  </button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button
+                    onClick={() => navigate('/quiz')}
+                    className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-green-700 transition-all"
+                  >
+                    Find My Perfect Clinic
+                  </button>
+                  <button
+                    onClick={() => {
+                      setIsSubmitted(false);
+                      setFormData({ name: '', email: '', postcode: '', condition: '' });
+                    }}
+                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    Send Another Guide
+                  </button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button
+                    onClick={() => navigate('/quiz')}
+                    className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-green-700 transition-all"
+                  >
+                    Find My Perfect Clinic
+                  </button>
+                  <button
+                    onClick={() => {
+                      setIsSubmitted(false);
+                      setFormData({ name: '', email: '', postcode: '', condition: '' });
                     }}
                     className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
                   >
@@ -462,6 +508,42 @@ const LandingFindReliefPage: React.FC = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="bg-white rounded-lg p-8">
+                {submitError && (
+                  <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+                    <div className="flex items-start">
+                      <AlertTriangle className="h-5 w-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="text-red-800 font-medium mb-1">Submission Failed</h4>
+                        <p className="text-red-700 text-sm">{submitError}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                {submitError && (
+                  <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+                    <div className="flex items-start">
+                      <AlertTriangle className="h-5 w-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="text-red-800 font-medium mb-1">Submission Failed</h4>
+                        <p className="text-red-700 text-sm">{submitError}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                {submitError && (
+                  <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+                    <div className="flex items-start">
+                      <AlertTriangle className="h-5 w-5 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="text-red-800 font-medium mb-1">Submission Failed</h4>
+                        <p className="text-red-700 text-sm">{submitError}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
                 {submitError && (
                   <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
                     <div className="flex items-start">
@@ -486,18 +568,40 @@ const LandingFindReliefPage: React.FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      disabled={isSubmitting}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed ${
-                        validationErrors.name ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                        validationErrors.name ? 'border-red-300 bg-red-50' :   'border-gray-300'
+                      }`}
+                        validationErrors.name ? 'border-red-300 bg-red-50' :   'border-gray-300'
+                      }`}
+                        validationErrors.name ? 'border-red-300 bg-red-50' :   'border-gray-300'
+                      }`}
+                        validationErrors.name ? 'border-red-300 bg-red-50' :   'border-gray-300'
                       }`}
                       placeholder="John Smith"
                     />
                     {validationErrors.name && (
                       <p className="mt-1 text-sm text-red-600">{validationErrors.name}</p>
                     )}
+                    {validationErrors.name && (
+                      <p className="mt-1 text-sm text-red-600">{validationErrors.name}</p>
+                    )}
+                    {validationErrors.name && (
+                      <p className="mt-1 text-sm text-red-600">{validationErrors.name}</p>
+                    )}
+                    {validationErrors.name && (
+                      <p className="mt-1 text-sm text-red-600">{validationErrors.name}</p>
+                    )}
                   </div>
 
                   <div>
+      setSubmitError(
+        error instanceof Error 
+          ? `Submission failed: ${error.message}. Please try again or contact support.`
+          : 'Something went wrong. Please try again or contact support.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                       Email Address *
                     </label>
@@ -508,15 +612,9 @@ const LandingFindReliefPage: React.FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      disabled={isSubmitting}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed ${
-                        validationErrors.email ? 'border-red-300 bg-red-50' : 'border-gray-300'
-                      }`}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="john.smith@example.com"
                     />
-                    {validationErrors.email && (
-                      <p className="mt-1 text-sm text-red-600">{validationErrors.email}</p>
-                    )}
                   </div>
 
                   <div>
@@ -530,15 +628,9 @@ const LandingFindReliefPage: React.FC = () => {
                       value={formData.postcode}
                       onChange={handleInputChange}
                       required
-                      disabled={isSubmitting}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed ${
-                        validationErrors.postcode ? 'border-red-300 bg-red-50' : 'border-gray-300'
-                      }`}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="SW1A 1AA"
                     />
-                    {validationErrors.postcode && (
-                      <p className="mt-1 text-sm text-red-600">{validationErrors.postcode}</p>
-                    )}
                   </div>
 
                   <div>
@@ -551,19 +643,13 @@ const LandingFindReliefPage: React.FC = () => {
                       value={formData.condition}
                       onChange={handleInputChange}
                       required
-                      disabled={isSubmitting}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed ${
-                        validationErrors.condition ? 'border-red-300 bg-red-50' : 'border-gray-300'
-                      }`}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Select your condition</option>
                       {conditions.map(condition => (
                         <option key={condition} value={condition}>{condition}</option>
                       ))}
                     </select>
-                    {validationErrors.condition && (
-                      <p className="mt-1 text-sm text-red-600">{validationErrors.condition}</p>
-                    )}
                   </div>
                 </div>
 
@@ -573,10 +659,7 @@ const LandingFindReliefPage: React.FC = () => {
                   className="w-full mt-8 bg-gradient-to-r from-blue-600 to-green-600 text-white py-4 px-8 rounded-lg text-lg font-bold hover:from-blue-700 hover:to-green-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
-                      Sending Your Guide...
-                    </>
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
                   ) : (
                     <>
                       <Mail className="h-5 w-5 mr-2" />
