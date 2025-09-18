@@ -509,7 +509,6 @@ const LandingFindReliefPage: React.FC = () => {
                         validationErrors.email ? 'border-red-300 bg-red-50' : 'border-gray-300'
                       }`}
                       placeholder="john.smith@example.com"
-                      disabled={isSubmitting}
                     />
                     {validationErrors.email && (
                       <p className="mt-1 text-sm text-red-600">{validationErrors.email}</p>
@@ -531,7 +530,6 @@ const LandingFindReliefPage: React.FC = () => {
                         validationErrors.postcode ? 'border-red-300 bg-red-50' : 'border-gray-300'
                       }`}
                       placeholder="SW1A 1AA"
-                      disabled={isSubmitting}
                     />
                     {validationErrors.postcode && (
                       <p className="mt-1 text-sm text-red-600">{validationErrors.postcode}</p>
@@ -551,7 +549,6 @@ const LandingFindReliefPage: React.FC = () => {
                       className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                         validationErrors.condition ? 'border-red-300 bg-red-50' : 'border-gray-300'
                       }`}
-                      disabled={isSubmitting}
                     >
                       <option value="">Select your condition</option>
                       {conditions.map(condition => (
@@ -582,7 +579,7 @@ const LandingFindReliefPage: React.FC = () => {
                 <div className="mt-4 text-xs text-gray-500 text-center">
                   <div className="flex items-center justify-center mb-2">
                     <Shield className="h-4 w-4 mr-1" />
-                    <span>GDPR compliant. We'll also send you helpful updates (unsubscribe anytime).</span>
+                    <span>We comply with UK GDPR regulations. Your data is secure.</span>
                   </div>
                   <p>
                     By submitting this form, you consent to receive educational information about 
