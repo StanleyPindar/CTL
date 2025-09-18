@@ -541,14 +541,8 @@ const LandingFindReliefPage: React.FC = () => {
                       className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                         validationErrors.email ? 'border-red-300 bg-red-50' : 'border-gray-300'
                       }`}
-                        validationErrors.email ? 'border-red-300 bg-red-50' : 'border-gray-300'
-                      }`}
                       placeholder="john.smith@example.com"
-                      disabled={isSubmitting}
                     />
-                    {validationErrors.email && (
-                      <p className="mt-1 text-sm text-red-600">{validationErrors.email}</p>
-                    )}
                     {validationErrors.email && (
                       <p className="mt-1 text-sm text-red-600">{validationErrors.email}</p>
                     )}
@@ -568,14 +562,8 @@ const LandingFindReliefPage: React.FC = () => {
                       className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                         validationErrors.postcode ? 'border-red-300 bg-red-50' : 'border-gray-300'
                       }`}
-                        validationErrors.postcode ? 'border-red-300 bg-red-50' : 'border-gray-300'
-                      }`}
                       placeholder="SW1A 1AA"
-                      disabled={isSubmitting}
                     />
-                    {validationErrors.postcode && (
-                      <p className="mt-1 text-sm text-red-600">{validationErrors.postcode}</p>
-                    )}
                     {validationErrors.postcode && (
                       <p className="mt-1 text-sm text-red-600">{validationErrors.postcode}</p>
                     )}
@@ -594,18 +582,12 @@ const LandingFindReliefPage: React.FC = () => {
                       className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                         validationErrors.condition ? 'border-red-300 bg-red-50' : 'border-gray-300'
                       }`}
-                      disabled={isSubmitting}
-                        validationErrors.condition ? 'border-red-300 bg-red-50' : 'border-gray-300'
-                      }`}
                     >
                       <option value="">Select your condition</option>
                       {conditions.map(condition => (
                         <option key={condition} value={condition}>{condition}</option>
                       ))}
                     </select>
-                    {validationErrors.condition && (
-                      <p className="mt-1 text-sm text-red-600">{validationErrors.condition}</p>
-                    )}
                     {validationErrors.condition && (
                       <p className="mt-1 text-sm text-red-600">{validationErrors.condition}</p>
                     )}
@@ -625,23 +607,13 @@ const LandingFindReliefPage: React.FC = () => {
                       Get My Free UK Guide
                     </>
                   )}
-                  ) : (
-                    <>
-                      <Mail className="h-5 w-5 mr-2" />
-                      Get My Free UK Guide
-                    </>
-                  )}
                 </button>
 
                 <div className="mt-4 text-xs text-gray-500 text-center">
                   <div className="flex items-center justify-center mb-2">
                     <Shield className="h-4 w-4 mr-1" />
-                    <span>GDPR compliant. We'll also send you helpful updates (unsubscribe anytime).</span>
+                    <span>We comply with UK GDPR regulations. Your data is secure.</span>
                   </div>
-                  <p>
-                    By submitting this form, you consent to receive educational information about 
-                    medical cannabis treatment in the UK. You can unsubscribe at any time.
-                  </p>
                   <p>
                     By submitting this form, you consent to receive educational information about 
                     medical cannabis treatment in the UK. You can unsubscribe at any time.
