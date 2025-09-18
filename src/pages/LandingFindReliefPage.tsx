@@ -451,8 +451,6 @@ const LandingFindReliefPage: React.FC = () => {
                     onClick={() => {
                       setIsSubmitted(false);
                       setFormData({ name: '', email: '', postcode: '', condition: '' });
-                      setValidationErrors({});
-                      setSubmitError(null);
                     }}
                     className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
                   >
@@ -486,8 +484,7 @@ const LandingFindReliefPage: React.FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      disabled={isSubmitting}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                         validationErrors.name ? 'border-red-300 bg-red-50' : 'border-gray-300'
                       }`}
                       placeholder="John Smith"
@@ -508,8 +505,7 @@ const LandingFindReliefPage: React.FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      disabled={isSubmitting}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                         validationErrors.email ? 'border-red-300 bg-red-50' : 'border-gray-300'
                       }`}
                       placeholder="john.smith@example.com"
@@ -530,8 +526,7 @@ const LandingFindReliefPage: React.FC = () => {
                       value={formData.postcode}
                       onChange={handleInputChange}
                       required
-                      disabled={isSubmitting}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                         validationErrors.postcode ? 'border-red-300 bg-red-50' : 'border-gray-300'
                       }`}
                       placeholder="SW1A 1AA"
@@ -551,8 +546,7 @@ const LandingFindReliefPage: React.FC = () => {
                       value={formData.condition}
                       onChange={handleInputChange}
                       required
-                      disabled={isSubmitting}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                         validationErrors.condition ? 'border-red-300 bg-red-50' : 'border-gray-300'
                       }`}
                     >
@@ -573,10 +567,7 @@ const LandingFindReliefPage: React.FC = () => {
                   className="w-full mt-8 bg-gradient-to-r from-blue-600 to-green-600 text-white py-4 px-8 rounded-lg text-lg font-bold hover:from-blue-700 hover:to-green-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
-                      Sending Your Guide...
-                    </>
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
                   ) : (
                     <>
                       <Mail className="h-5 w-5 mr-2" />
