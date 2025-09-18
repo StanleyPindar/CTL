@@ -434,7 +434,11 @@ const LandingFindReliefPage: React.FC = () => {
               <div className="bg-white rounded-lg p-8 text-center">
                 <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  ✅ Success! Your Cannabis Prescription Guide Has Been Sent!
+                  
+            )
+            }
+  )
+}✅ Success! Your Cannabis Prescription Guide Has Been Sent!
                 </h3>
                 <p className="text-gray-600 mb-6">
                   Your personalised UK Medical Cannabis Eligibility Guide has been sent to <strong>{formData.email}</strong>. 
